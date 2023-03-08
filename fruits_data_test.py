@@ -49,9 +49,9 @@ def main():
     train_images, train_targets = next(iter(train_dataloader))
     # PyTorch does not allow "writing text" on an image the same way OpenCV does
     # So we'll make a dictionary mapping for our classes to correspond to a certain color
-    # Classes are 1: apple, 2: banana, 3: orange, 4: mixed
-    colors_dict = {1: 'red', 2: 'yellow', 3: 'orange', 4: 'blue'}
-    cv_labels_dict = {1: 'apple', 2: 'banana', 3: 'orange', 4: 'mixed'}
+    # Classes are 1: apple, 2: banana, 3: orange
+    colors_dict = {1: 'red', 2: 'yellow', 3: 'orange'}
+    cv_labels_dict = {1: 'apple', 2: 'banana', 3: 'orange'}
     for img, targ in zip(train_images, train_targets):
         boxes = targ['boxes']
         labels = targ['labels']

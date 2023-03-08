@@ -58,11 +58,11 @@ class FruitsDataset(Dataset):
         return image, target
 
     def __convert_labels__(self, x):
-        # This function will convert our string labels into a one hot encoding value
+        # This function will convert our string labels into integer values
         # Torch will now allow creating a tensor using strings so our workaround will be
         # to use this encoding.
         # Remember, torch reserves 0 for the "background class" so we start at 1
         # TODO: This may not be true for Faster-RCNN, just for Mask-RCNN
-        encoding = {'apple': 1, 'banana': 2, 'orange': 3, 'mixed': 4}
+        encoding = {'apple': 1, 'banana': 2, 'orange': 3}
         converted_label = encoding[x]
         return converted_label
