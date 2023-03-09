@@ -1,7 +1,17 @@
 import torch
-from torchvision.io import read_image
+from torchvision.io import read_image, ImageReadMode
 from torch.utils.data import Dataset
+from torchvision.transforms.functional import convert_image_dtype
 import pandas as pd
+
+
+def fruits_collate_fn(batch):
+    """
+    A simple collate function for batching our dataset in a dataloader
+    :param batch:
+    :return:
+    """
+    return tuple(zip(*batch))
 
 
 class FruitsDataset(Dataset):
@@ -40,7 +50,10 @@ class FruitsDataset(Dataset):
         labels = torch.as_tensor(labels)
 
         # Read the image using torchvision so we can return it
-        image = read_image(img_path)
+        # FasterRCNN model requires the image to be a floating point type.
+        # We use convert_image_dtype to convert from [0-255] to [0.0-1.0]
+        image = read_image(img_path, ImageReadMode.RGB)
+        image = convert_image_dtype(image, torch.float)
 
         # Apply any transforms if they were supplied
         if self.transform:

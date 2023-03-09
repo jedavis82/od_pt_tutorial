@@ -2,3 +2,7 @@ https://pytorch.org/vision/main/auto_examples/plot_visualization_utils.html
 The above is an article on how to visualize bounding boxes using open cv.
 For whatever reason, the fruits dataset contains some corrupted files.
 I will just revert to opencv for drawing these for now.
+
+
+Change the dataset notebook to reflect the image dtype conversion.
+See fruits_dataset.py ~ line 56
