@@ -10,7 +10,7 @@ There are detailed instructions on setting up this environment in the correspond
 
 ## Installation of Required Tools and Packages 
 ### Miniconda
-All code was developed using [Miniconda](). Download the appropriate version for your OS and install the tool. 
+All code was developed using [Miniconda](https://docs.conda.io/en/latest/miniconda.html). Download the appropriate version for your OS and install the tool. 
 It is not necessary to use Miniconda, any virtual environment tool will work fine, but the instructions in this 
 tutorial are specifically targeted at a Miniconda environment. 
 #### Creating your Miniconda Environment 
