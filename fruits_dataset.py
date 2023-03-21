@@ -62,11 +62,13 @@ class FruitsDataset(Dataset):
             labels = self.target_transform(labels)
 
         # Add the results for our image to a dictionary. This dictionary will hold the
-        # box, labels, and area of our box
+        # box, labels, and area of our box.
+        # We cannot use the string path for 'img_id' in our targets. Instead we'll use the index passed in
+        # to the dataloader
         target = {'boxes': boxes,
                   'area': area,
                   'labels': labels,
-                  'img_id': img_id}
+                  'img_id': torch.tensor([index])}
 
         return image, target
 
