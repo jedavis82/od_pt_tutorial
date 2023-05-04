@@ -1,0 +1,45 @@
+https://pytorch.org/vision/main/auto_examples/plot_visualization_utils.html
+The above is an article on how to visualize bounding boxes using torchvision.
+For whatever reason, the fruits dataset contains some corrupted files.
+I will just revert to opencv for drawing these for now.
+
+Look at the albumentations library: https://github.com/albumentations-team/albumentations
+    Can use this to do the image transforms since we don't have a ton of data.
+
+Referencing these articles to set up the object detection model and training:
+https://pyimagesearch.com/2021/11/01/training-an-object-detector-from-scratch-in-pytorch/
+https://towardsdatascience.com/bounding-box-prediction-from-scratch-using-pytorch-a8525da51ddc
+https://blog.paperspace.com/object-localization-pytorch-2/
+
+Proposing I use this to compute the box regression loss:
+https://pytorch.org/vision/main/generated/torchvision.ops.generalized_box_iou_loss.html
+
+Really good article on using TIMM
+https://towardsdatascience.com/getting-started-with-pytorch-image-models-timm-a-practitioners-guide-4e77b4bf9055
+
+FUCK LOOKING AT THE INTERNET, I KNOW WHAT TO DO. MAKE THE DAMN MODEL JUST USING THE ABOVE AS A GUIDE AND NOTHING
+ELSE. THAT SHIT ISN'T THE END ALL BE ALL.
+
+Number of proposed boxes:
+   I was under the impression that only one box would be proposed per image. This is inaccurate.
+   The way all of these methods work, each RPN or sliding window patch, each can propose a box.
+   So no worries on not proposing enough boxes.
+
+
+DATASET:
+    I need to rewrite the get item function. I can't have a tensor of different shapes.
+    All my images are of different shapes. The model itself accepts a specific size image.
+    So there are a couple of questions now.
+    1. When I resize the image, do I need to resize the target boxes as well?
+        Because the target boxes can't be right if the model is looking at the image in a different scale
+    2. How do I scale the images/boxes easily?
+    3. How do I store the original image size so that I can scale the bounding boxes to the proper size
+       during inference?
+
+    The image part of the dataloader is working correctly now that I've done the resize.
+    The bounding box part isn't working now if you have different number of bounding boxes per images in the
+    batch. Stupid af, but it is what it is. Can probably return the list of bounding boxes from the dataloader
+    and then figure out what to do with them when they're needed for the losses.
+
+    I have the boxes working correctly now using the custom collate function. I'll have to flesh the model out more
+    to see if it is all working.

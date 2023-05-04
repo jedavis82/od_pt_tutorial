@@ -1,0 +1,7 @@
+Listing the changes that will need to be made to the notebooks after I finish
+
+Dataset is changing. I am going to resize the images to the scale of the inputs required by the torch model
+we are using. I need to reflect that change in the notebook. Most everything should be okay, just the resize
+needs to be reflected.
+
+Model itself. Changing from using torchvision over to using timm. It's a lot easier and makes more sense.
