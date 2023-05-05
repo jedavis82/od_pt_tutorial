@@ -20,7 +20,6 @@ def fruits_collate_fn(batch):
     # return tuple(zip(*batch))
 
 
-
 class FruitsDataset(Dataset):
     def __init__(self, annotations_file: str, img_dir: str, size: Tuple[int], transform=None, target_transform=None):
         self.data_df = pd.read_csv(annotations_file, encoding='utf-8', engine='python')
@@ -45,7 +44,6 @@ class FruitsDataset(Dataset):
 
         # Select all rows in our data frame that contain entries for the image at location data_df[index]
         img_annotations = self.data_df.loc[self.data_df['filename'] == img_id]
-
 
         # Read the image using torchvision so we can return it
         # FasterRCNN model requires the image to be a floating point type.

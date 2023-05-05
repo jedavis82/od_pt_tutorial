@@ -1,0 +1,5 @@
+Listing the changes that will need to be made to the notebooks after I finish
+
+Collate function. This changed so that the dataset could be batched. I'll need to go back in and
+recreate this and provide a description.
+    Probably just rewrite that notebook one function at a time when I get this done honestly.

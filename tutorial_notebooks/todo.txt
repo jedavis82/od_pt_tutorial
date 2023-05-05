@@ -1,0 +1,9 @@
+This fruits data is kinda bad. I'm going to go ahead and follow this kaggle notebook
+and finish the training script with it: https://www.kaggle.com/code/yerramvarun/fine-tuning-faster-rcnn-using-pytorch
+
+Full circle, but the best way to do this is to clone the torchvision repo and use it like it is used
+in all the articles you see online.
+
+Really doesn't matter about the tutorial stuff. I can keep going down that path. Just finish the training on
+the fruits dataset first and then the license plates/cars. Come back and flesh out the rest of the tutorial
+on the fruits dataset if I really want to.
