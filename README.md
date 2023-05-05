@@ -24,7 +24,7 @@ from the Torchvision repo are in the `./vision/references/detection/` folder.
 
 ### Datasets
 This repo contains training and inference code that works on several data sets.
-1. [Kaggle Fruits Dataset](https://www.kaggle.com/code/yerramvarun/fine-tuning-faster-rcnn-using-pytorch/input)
+1. [Kaggle Fruits Dataset](https://www.kaggle.com/datasets/mbkinaci/fruit-images-for-object-detection)
 2. [Roboflow Dollar Bill Detection](https://universe.roboflow.com/alex-hyams-cosqx/dollar-bill-detection)
 3. [Roboflow Pistols Detection](https://public.roboflow.com/object-detection/pistols)
 4. [Roboflow License Plates](https://universe.roboflow.com/samrat-sahoo/license-plates-f8vsn)

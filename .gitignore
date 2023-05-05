@@ -146,3 +146,8 @@ dmypy.json
 /data/License-Plates/test/
 /data/License-Plates/train/
 /data/License-Plates/valid/
+/data/fruits_tutorial/test/
+/data/fruits_tutorial/train/
+/data/fruits_tutorial/valid/
+/data/fruits/temp/
+/data/fruits/val/
