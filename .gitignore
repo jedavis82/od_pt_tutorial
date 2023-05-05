@@ -136,3 +136,13 @@ dmypy.json
 /scratch.py
 /scratch.ipynb
 /data/models/
+/data/Vehicles-OpenImages/test/
+/data/Vehicles-OpenImages/train/
+/data/Vehicles-OpenImages/valid/
+/data/Pistols/export/
+/data/dollar_bill/test/
+/data/dollar_bill/train/
+/data/dollar_bill/valid/
+/data/License-Plates/test/
+/data/License-Plates/train/
+/data/License-Plates/valid/
