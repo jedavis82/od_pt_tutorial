@@ -3,8 +3,8 @@ import os
 
 cache_dir = '../data/models/'
 num_classes = 4
-model_type = 'fcos'
-model_training = True  # Set to true to train, false to run the test set
+model_type = 'fasterrcnn'
+model_training = False  # Set to true to train, false to run the test set
 
 device = 'cuda:0' if torch.cuda.is_available() else 'cpu'
 batch_size = 2

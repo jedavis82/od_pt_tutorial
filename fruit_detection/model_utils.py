@@ -42,12 +42,15 @@ def get_od_model(num_classes, model_type):
         model.head.classification_head.cls_logits = cls_logits
         return model
     elif model_type.lower() == 'fcos':
-        model = torchvision.models.detection.fcos.fcos_resnet50_fpn(FCOS_ResNet50_FPN_Weights.DEFAULT)
+        # Taken from this SO answer: https://datascience.stackexchange.com/a/96815
+        model = torchvision.models.detection.fcos.fcos_resnet50_fpn(weights=FCOS_ResNet50_FPN_Weights.DEFAULT)
         in_features = model.head.classification_head.conv[0].in_channels
         num_anchors = model.head.classification_head.num_anchors
-        model.head.classification_head = FCOSClassificationHead(
-            num_classes=num_classes, num_anchors=num_anchors, in_channels=in_features
-        )
+        model.head.classification_head.num_classes = num_classes
+        cls_logits = torch.nn.Conv2d(in_features, num_anchors*num_classes, kernel_size=3, stride=1, padding=1)
+        torch.nn.init.normal_(cls_logits.weight, std=0.01)
+        torch.nn.init.constant_(cls_logits.bias, -math.log((1-0.01)/0.01))
+        model.head.classification_head.cls_logits = cls_logits
         return model
     else:
         raise Exception("Invalid model type supplied")
