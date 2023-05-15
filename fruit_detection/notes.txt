@@ -1,0 +1,29 @@
+Right now this works on FasterRCNN. Can I use this on SSD or another variant in the torchvision pretrained models?
+    Load up FasterRCNN again and inspect the network.
+        In particular, the heads of the box predictor.
+        Can I just replace a SSD head etc?
+    I don't think I can do this with TIMM because the models didn't ship with a box predictor.
+        However, if the box_predictor (where I assign FastRCNNPredictor) does contain both the label
+        classification head and the box regression head, I may be able to do this.
+        Get the current version of the code going first and then experiment with that.
+
+If this model training stagnates, try some different augmentations
+
+Change the get model function to accept an argument for the model type. Wire up a few different model types in
+this function. Training should remain the same.
+
+Add in more augmentations to the get_transforms function. Maybe just set the p lower.
+
+Cannot create a class for this, in the classical sense anyway. When you create the model it's of type
+FasterRCNN etc. instead of type NN.module.
+    Either just stick with the get_model function or figure out some way around this.
+    No real reason to make it a class I don't think.
+    The other option is to test out the first note above. If we can do that, then that's a bit more modular.
+        What I'll need to figure out here is if I can just stick a box head on top of a TIMM model and
+        still use the train_one_epoch and evaluate functions
+
+For the inference example, I'm pretty sure you have to convert the original image to a Torch tensor before you
+can pass it to the model. The way I'm doing it now is just using a test dataset. This is something I'll have
+to figure out if we try to take this and use it for something other than just tinkering around.
+
+This work heavily leverages: https://www.kaggle.com/code/yerramvarun/fine-tuning-faster-rcnn-using-pytorch/notebook
